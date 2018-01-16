@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -185,7 +186,9 @@
     <Compile Include="Controllers\OrdensController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\RoleManager.cs" />
     <Compile Include="Controllers\TipoDocumentoController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,6 +210,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\OrdemView.cs" />
+    <Compile Include="ViewModels\RoleView.cs" />
+    <Compile Include="ViewModels\UserView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -290,6 +295,8 @@
     <Content Include="Views\Pessoa\Index.cshtml" />
     <Content Include="Views\Ordens\NovaOrdem.cshtml" />
     <Content Include="Views\Ordens\AddProduto.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
