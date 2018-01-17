@@ -6,3 +6,24 @@
 
 <h2>Configuracao de Permissoes - Usuario - @Model.Nome</h2>
 
+<p>
+    @Html.ActionLink("Nova Permissao", "AddRole", new { userId = Model.UserId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Voltar", "Index", new {}, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+
+
+    @for (int i = 0; i < Model.Roles.Count; i++)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => Model.Roles[i].Name)
+            </td>
+            <td>
+                @Html.ActionLink("Excluir", "Delete", new { user = Model, roleId = Model.Roles[i].RoleId })
+            </td>
+        </tr>
+    }
+
+</table>
