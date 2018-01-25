@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -39,7 +40,11 @@ namespace SistemaLoja.Models
 
         public string NomeCompleto { get { return string.Format("{0} {1}", Nome, Sobrenome);  } }
 
+        //using jsonignore for API
+        [JsonIgnore]
         public virtual TipoDocumento TipoDocumento { get; set; }
+        //using jsonignore for API
+        [JsonIgnore]
         public virtual ICollection<Ordem> Ordem { get; set; }
     }
 }

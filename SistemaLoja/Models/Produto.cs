@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,7 +32,11 @@ namespace SistemaLoja.Models
         [DataType(DataType.MultilineText)]
         public string Comentario { get; set; }
 
+        //using jsonignore for API
+        [JsonIgnore]
         public virtual ICollection<FornecedorProduto> FornecedorProduto { get; set; }
+
+        [JsonIgnore]
         public virtual ICollection<OrdemDetalhe> OrdensDetalhes { get; set; }
     }
 }
