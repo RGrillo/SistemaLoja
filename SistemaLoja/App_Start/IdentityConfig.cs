@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,8 +19,30 @@ namespace SistemaLoja
     {
         public Task SendAsync(IdentityMessage message)
         {
+            //Change email information to be sent, mensage
+            var envia = "contapararecuperarsenha@hotmail.com";
+            var user = "contapararecuperarsenha@hotmail.com";
+            var pass = "hugo123456";
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            //return Task.FromResult(0);
+            System.Net.NetworkCredential credencial = new System.Net.NetworkCredential(user, pass);
+            SmtpClient cliente = new SmtpClient()
+            {
+                Host = "smtp.live.com",
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Port = 25, 
+                EnableSsl = true, 
+                Credentials = credencial
+            };
+
+
+            var mail = new MailMessage(envia, message.Destination);
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
+
+            return cliente.SendMailAsync(mail);
         }
     }
 

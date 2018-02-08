@@ -1,31 +1,88 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Sistema Loja";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="~/Content/carousel.css" />
+
+</head>
+
+<body>
+
+
+
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="~/imagens/01.jpg" alt="Técnologia">
+                <div class="carousel-caption">
+                    <h2>Sistemas com ASP NET</h2>
+                    <p><small><small><small> já a criar seus sistemas usando o modelo MVC e banco de dados SQL</small></small></small></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/imagens/02.png" alt="Técnologia">
+                <div class="carousel-caption">
+                    <h2>Sistemas com ASP NET</h2>
+                    <p><small><small><small> já a criar seus sistemas usando o modelo MVC e banco de dados SQL</small></small></small></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/imagens/03.jpg" alt="Técnologia">
+                <div class="carousel-caption">
+                    <h2>Sistemas com ASP NET</h2>
+                    <p><small><small><small> já a criar seus sistemas usando o modelo MVC e banco de dados SQL</small></small></small></p>
+                </div>
+            </div>
+            ...
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="img-circle" src="~/imagens/hugo.jpg" width="140" height="140">
+                <h2>Rodrigo Grillo</h2>
+                <p>Resourceful, proactive IT professional with experience within well-known organisations. Proficient in grasping new technical concepts and recognised for analytical thinking skills. Passionate about technologies. Excellent technical skills with improving ability to complete stages of the software development life-cycle. Credible team player also capable of working on own initiative.</p>
+                <p><a class="btn btn-default" href="https://www.linkedin.com/in/rodrigo-lima-6308793b/" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="~/imagens/tec1.png" alt="Generic placeholder image" width="140" height="140">
+                <h2>Sistema ASP NET</h2>
+                <p>Neste curso finalizamos o sistema de ordem de pedidos criado em ASP NET com SQL e MVC.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="~/imagens/tec2.png" alt="Generic placeholder image" width="140" height="140">
+                <h2>Publicação com ASP</h2>
+                <p>Uma aplicação em asp net com sql, usamos um servidor gratuito para podermos hospedar, existem hoje em dia vários servidores com este tipo de suporte no mercado.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
