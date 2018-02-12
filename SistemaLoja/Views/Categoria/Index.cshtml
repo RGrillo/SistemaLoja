@@ -3,21 +3,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Categorias</h2>
+<h3>Categorias</h3> <br /><br />
 
 @using (Html.BeginForm())
 {
-    <button id="btnGetCategorias" class="btn btn-success">Buscar Categorias</button>
-    <button id="btnGetCategoria" class="btn btn-info">Buscar Categoria</button>
-    <button id="btnAddCategorias" class="btn btn-default">ADD Categorias</button>
-    <button id="btnUpdateCategorias" class="btn btn-info">Editar Categorias</button>
-    <button id="btnDeleteCategorias" class="btn btn-danger">Deletar Categorias</button>
-    <br /><br />
+    <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+        <button id="btnGetCategorias" class="btn btn-success"> <i class="glyphicon glyphicon-th-list"> </i>&nbsp; Ver Categorias</button>
+        <button id="btnGetCategoria" class="btn btn-info"> <i class="glyphicon glyphicon-search"> </i>&nbsp;Buscar Categoria</button>
+        <button id="btnAddCategorias" class="btn btn-default"><i class="glyphicon glyphicon-plus"> </i>&nbsp;ADD Categorias</button>
+        <button id="btnUpdateCategorias" class="btn btn-info"><i class="glyphicon glyphicon-pencil"> </i>&nbsp;Editar Categorias</button>
+        <button id="btnDeleteCategorias" class="btn btn-danger"><i class="glyphicon glyphicon-trash"> </i>&nbsp;Deletar Categorias</button>
+        <br /><br />
+    </div>
 
-    <input id="txtCategoriaId" Type="text" placeholder="Id Categoria" class="form-control" />
-    <input id="txtDescricao" Type="text" placeholder="Descrição" class="form-control"/>
+    <input id="txtCategoriaId" class="form-control" text" placeholder="Id Categoria" />
+    <input id="txtDescricao" class="form-control" Type="text" placeholder="Descrição" />
 
-    <br /><br />
+
 
     <div id="lblMensagem"></div>
 
@@ -36,20 +38,35 @@
                 })
 
 
-                .success(function (data) {
-                    var saida = '';
-                    for (var i = 0; i < data.length; i++) {
-                        saida += '<hr><br>';
-                        saida += '<b>Categoria ID: </b>' + data[i].CategoriaId + '<br>';
-                        saida += '<b>Descrição: </b>' + data[i].Descricao + '<br>';
-                    }
-                    $("#lblMensagem").html(saida);
-                })
+                    .success(function (data) {
+                        var saida = '';
 
-                .error(function (xhr, ajaxOptions, throwError) {
-                    $("#lblMensagem").html("Ocorreu um Erro");
+                        saida += '<table class="table">';
+                        saida += '<thread>';
+                        saida += '<tr>';
+                        saida += '<th>Categoria ID</th>';
+                        saida += '<th>Descrição</th>';
+                        saida += '</tr>';
+                        saida += '</thread>';
+                        saida += '<tbody>';
+                        saida += '<tr>';
+                        for (var i = 0; i < data.length; i++) {
 
-                });
+                            saida += '<td class="">' + data[i].CategoriaId + '</td>';
+                            saida += '<td>' + data[i].Descricao + '</td>';
+                            saida += '</tr>';
+                        }
+
+                        saida += '</tbody>';
+                        saida += '</table>';
+
+                        $("#lblMensagem").html(saida);
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+                        $("#lblMensagem").html("Ocorreu um Erro");
+
+                    });
                 return false;
             });
 
@@ -69,31 +86,47 @@
                 })
 
 
-                .success(function (data) {
-                    if (data != null) {
-                        var saida = '';
+                    .success(function (data) {
+                        if (data != null) {
+                            var saida = '';
 
-                        saida += '<hr><br>';
-                        saida += '<b>Categoria ID: </b>' + data.CategoriaId + '<br>';
-                        saida += '<b>Descrição: </b>' + data.Descricao + '<br>';
+                            saida += '<table class="table">';
+                            saida += '<thread>';
+                            saida += '<tr>';
+                            saida += '<th>Categoria ID</th>';
+                            saida += '<th>Descrição</th>';
+                            saida += '</tr>';
+                            saida += '</thread>';
+                            saida += '<tbody>';
+                            saida += '<tr>';
 
-                        $("#lblMensagem").html(saida);
-                    } else {
-                        $("#lblMensagem").html("Esta categoria não existe");
-                    }
-                })
 
-                .error(function (xhr, ajaxOptions, throwError) {
-                    $("#lblMensagem").html("Ocorreu um Erro");
+                            saida += '<td class="">' + data.CategoriaId + '</td>';
+                            saida += '<td>' + data.Descricao + '</td>';
+                            saida += '</tr>';
 
-                });
+
+                            saida += '</tbody>';
+                            saida += '</table>';
+
+                            $("#lblMensagem").html(saida);
+                        } else {
+                            $("#lblMensagem").html("Esta categoria não existe");
+                        }
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+                        $("#lblMensagem").html("Ocorreu um Erro");
+
+                    });
                 return false;
             });
 
             $("#btnAddCategorias").on("click", function () {
+
                 var descricao = $('#txtDescricao').val();
                 if (descricao == "") {
-                    $("#lblMensagem").html("É preciso informar a Descricao");
+                    $("#lblMensagem").html("É preciso informar a descrição!");
                     return false;
                 }
 
@@ -102,30 +135,43 @@
                 $.ajax({
                     type: 'POST',
                     url: '/api/CategoriaAPI/',
-                    data: categoria, 
+                    data: categoria,
                     datatype: 'json',
                     cache: false,
                 })
 
 
-                .success(function (data) {
-                       
-                    var saida = '';
+                    .success(function (data) {
 
-                    saida += '<hr>Categoria Adicionada<br>';
-                    saida += '<b>Categoria ID: </b>' + data.CategoriaId + '<br>';
-                    saida += '<b>Descrição: </b>' + data.Descricao + '<br>';
+                        var saida = '';
+                        saida += '<hr>Categoria adicionada com sucesso!!<br><br><br>';
+                        saida += '<table class="table">';
+                        saida += '<thread>';
+                        saida += '<tr>';
+                        saida += '<th>Categoria ID</th>';
+                        saida += '<th>Descrição</th>';
+                        saida += '</tr>';
+                        saida += '</thread>';
+                        saida += '<tbody>';
+                        saida += '<tr>';
 
-                    $("#lblMensagem").html(saida);
 
+                        saida += '<td class="">' + data.CategoriaId + '</td>';
+                        saida += '<td>' + data.Descricao + '</td>';
+                        saida += '</tr>';
 
-                        
-                })
+                        saida += '</tbody>';
+                        saida += '</table>';
 
-                .error(function (xhr, ajaxOptions, throwError) {
-                    $("#lblMensagem").html("Ocorreu um Erro");
+                        $("#lblMensagem").html(saida);
 
-                });
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+                        $("#lblMensagem").html("Ocorreu um Erro");
+
+                    });
+
                 return false;
             });
 
@@ -133,7 +179,7 @@
 
                 var descricao = $('#txtDescricao').val();
                 if (descricao == "") {
-                    $("#lblMensagem").html("É preciso informar a Descricao");
+                    $("#lblMensagem").html("É preciso informar a descrição!");
                     return false;
                 }
 
@@ -143,7 +189,7 @@
                     return false;
                 }
 
-                var categoria = { CategoriaId:categoriaId, Descricao: descricao }
+                var categoria = { CategoriaId: categoriaId, Descricao: descricao }
 
                 $.ajax({
                     type: 'PUT',
@@ -154,26 +200,29 @@
                 })
 
 
-                .success(function (data) {
+                    .success(function (data) {
 
-                    var saida = '';
+                        var saida = '';
 
-                    saida += '<hr>Categoria Editada com sucesso<br>';
-
-                    $("#lblMensagem").html(saida);
+                        saida += '<hr>Categoria Editada com Sucesso <br>';
 
 
+                        $("#lblMensagem").html(saida);
 
-                })
+                    })
 
-                .error(function (xhr, ajaxOptions, throwError) {
-                    $("#lblMensagem").html("Ocorreu um Erro");
+                    .error(function (xhr, ajaxOptions, throwError) {
+                        $("#lblMensagem").html("Ocorreu um Erro");
 
-                });
+                    });
+
+
                 return false;
             });
 
             $("#btnDeleteCategorias").on("click", function () {
+
+
                 var categoriaId = $('#txtCategoriaId').val();
                 if (categoriaId == "") {
                     $("#lblMensagem").html("É preciso informar um ID para Categoria");
@@ -188,38 +237,58 @@
                 })
 
 
-                .success(function (data) {
-                    if (data != null) {
-                        var saida = '';
+                    .success(function (data) {
+                        if (data != null) {
+                            var saida = '';
 
-                        saida += '<hr>Categoria Excluida com sucesso<br>';
-                        saida += '<b>Categoria ID: </b>' + data.CategoriaId + '<br>';
-                        saida += '<b>Descrição: </b>' + data.Descricao + '<br>';
+                            saida += '<hr>Categoria excluida com sucesso!!<br><br><br>';
 
-                        $("#lblMensagem").html(saida);
-                    } else {
-                        $("#lblMensagem").html("Esta categoria não existe");
-                    }
-                })
 
-                .error(function (xhr, ajaxOptions, throwError) {
-                    $("#lblMensagem").html("Ocorreu um Erro");
+                            saida += '<table class="table">';
+                            saida += '<thread>';
+                            saida += '<tr>';
+                            saida += '<th>Categoria ID</th>';
+                            saida += '<th>Descrição</th>';
+                            saida += '</tr>';
+                            saida += '</thread>';
+                            saida += '<tbody>';
+                            saida += '<tr>';
 
-                });
+
+                            saida += '<td class="">' + data.CategoriaId + '</td>';
+                            saida += '<td>' + data.Descricao + '</td>';
+                            saida += '</tr>';
+
+
+                            saida += '</tbody>';
+                            saida += '</table>';
+
+
+                            $("#lblMensagem").html(saida);
+                        } else {
+                            $("#lblMensagem").html("Esta categoria não existe");
+                        }
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+                        $("#lblMensagem").html("Ocorreu um Erro");
+
+                    });
+
                 return false;
             });
 
             $(document).ajaxStart(function () {
                 $("#loading").show();
-            })
+            });
 
             $(document).ajaxStop(function () {
                 $("#loading").hide();
-            })
+            });
+
         });
-
-
     </script>
+
 }
 
 <style type="text/css">
@@ -238,4 +307,5 @@
         opacity: 0.75;
     }
 </style>
+
 <div id="loading"><img src="~/Images/Loader.gif" /></div>
